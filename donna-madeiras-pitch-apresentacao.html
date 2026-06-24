@@ -47,36 +47,46 @@
             justify-content: center;
         }
         
-        /* Fundo Geométrico - Profundidade */
+        /* Fundo Geométrico - Rede Conectada */
         .slide::before,
         .slide::after {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             pointer-events: none;
-            opacity: 0.04;
+            opacity: 0.06;
             z-index: 0;
         }
         
         .slide::before {
-            top: -100px;
-            left: -100px;
-            background: 
-                linear-gradient(45deg, var(--accent-bright) 25%, transparent 25%, transparent 75%, var(--accent-bright) 75%, var(--accent-bright)),
-                linear-gradient(45deg, var(--accent-bright) 25%, transparent 25%, transparent 75%, var(--accent-bright) 75%, var(--accent-bright));
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            transform: rotate(15deg);
+            top: -150px;
+            left: -150px;
+            background-image: 
+                radial-gradient(circle at 50% 50%, var(--accent-bright) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(30deg, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(150deg, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(90deg, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(0deg, var(--accent-bright) 1px, transparent 1px);
+            background-size: 80px 80px, 40px 40px, 80px 80px, 80px 80px, 80px 80px, 80px 80px;
+            background-position: 0 0, 20px 20px, 0 0, 0 0, 0 0, 0 0;
+            transform: rotate(10deg);
         }
         
         .slide::after {
-            bottom: -100px;
-            right: -100px;
-            background: 
-                repeating-linear-gradient(90deg, var(--accent-bright) 0px, var(--accent-bright) 1px, transparent 1px, transparent 40px),
-                repeating-linear-gradient(0deg, var(--accent-bright) 0px, var(--accent-bright) 1px, transparent 1px, transparent 40px);
-            transform: rotate(-15deg);
+            bottom: -150px;
+            right: -150px;
+            background-image: 
+                radial-gradient(circle at 50% 50%, var(--accent-bright) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(60deg, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(120deg, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(90deg, var(--accent-bright) 1px, transparent 1px),
+                linear-gradient(0deg, var(--accent-bright) 1px, transparent 1px);
+            background-size: 80px 80px, 40px 40px, 80px 80px, 80px 80px, 80px 80px, 80px 80px;
+            background-position: 0 0, 20px 20px, 0 0, 0 0, 0 0, 0 0;
+            transform: rotate(-10deg);
         }
         
         .slide-content {
@@ -167,12 +177,16 @@
             right: -150px;
             width: 500px;
             height: 500px;
-            background: 
-                linear-gradient(45deg, rgba(49, 130, 206, 0.08) 25%, transparent 25%, transparent 75%, rgba(49, 130, 206, 0.08) 75%, rgba(49, 130, 206, 0.08)),
-                linear-gradient(45deg, rgba(49, 130, 206, 0.08) 25%, transparent 25%, transparent 75%, rgba(49, 130, 206, 0.08) 75%, rgba(49, 130, 206, 0.08));
-            background-size: 80px 80px;
-            background-position: 0 0, 40px 40px;
-            transform: rotate(15deg);
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(49, 130, 206, 0.15) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(49, 130, 206, 0.1) 1px, transparent 1px),
+                linear-gradient(30deg, rgba(49, 130, 206, 0.08) 1px, transparent 1px),
+                linear-gradient(150deg, rgba(49, 130, 206, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(49, 130, 206, 0.08) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(49, 130, 206, 0.08) 1px, transparent 1px);
+            background-size: 80px 80px, 40px 40px, 80px 80px, 80px 80px, 80px 80px, 80px 80px;
+            background-position: 0 0, 20px 20px, 0 0, 0 0, 0 0, 0 0;
+            transform: rotate(10deg);
             pointer-events: none;
             z-index: 0;
         }
