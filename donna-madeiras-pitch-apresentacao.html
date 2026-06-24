@@ -8,15 +8,17 @@
         :root {
             --bg-primary: #F5F5F5;
             --bg-secondary: #FFFFFF;
-            --bg-dark: #2C3E50;
-            --accent: #C0392B;
-            --accent-light: #E74C3C;
+            --bg-dark: #0D1B2A;
+            --bg-navy: #1B263B;
+            --accent: #1E3A5F;
+            --accent-light: #2C5282;
+            --accent-bright: #3182CE;
             --text-primary: #1A1A1A;
-            --text-secondary: #555555;
-            --text-muted: #888888;
-            --border: #E0E0E0;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --shadow-strong: rgba(0, 0, 0, 0.15);
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --border: #E2E8F0;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow-strong: rgba(13, 27, 42, 0.15);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -100,9 +102,9 @@
         /* Slide 1: Capa */
         .slide-cover {
             background: 
-                linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 73, 94, 0.9) 50%, rgba(26, 35, 45, 0.95) 100%),
-                repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 40px),
-                linear-gradient(135deg, var(--bg-dark) 0%, #1a252f 100%);
+                linear-gradient(135deg, rgba(13, 27, 42, 0.98) 0%, rgba(27, 38, 59, 0.95) 50%, rgba(30, 58, 95, 0.92) 100%),
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px),
+                linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-navy) 100%);
             color: white;
             justify-content: center;
             align-items: center;
@@ -118,8 +120,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(192, 57, 43, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(192, 57, 43, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(49, 130, 206, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(49, 130, 206, 0.08) 0%, transparent 50%);
             pointer-events: none;
         }
         
@@ -134,7 +136,7 @@
         }
         
         .slide-cover .subtitle {
-            color: var(--accent);
+            color: var(--accent-bright);
             font-size: clamp(1.5rem, 3vw, 2.5rem);
             margin-bottom: 40px;
         }
@@ -165,7 +167,7 @@
         .challenge-item {
             background: var(--bg-secondary);
             padding: 25px;
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid var(--accent-bright);
             box-shadow: 0 4px 15px var(--shadow);
         }
         
@@ -177,8 +179,8 @@
         }
         
         .urgent {
-            border-left-color: var(--accent-light);
-            background: rgba(192, 57, 43, 0.05);
+            border-left-color: var(--accent-bright);
+            background: rgba(49, 130, 206, 0.08);
         }
         
         /* Slide 3: A Visão */
@@ -221,8 +223,8 @@
         }
         
         .pillar-card.highlight {
-            border-color: var(--accent);
-            background: rgba(192, 57, 43, 0.03);
+            border-color: var(--accent-bright);
+            background: rgba(49, 130, 206, 0.05);
         }
         
         .pillar-card h3 {
@@ -234,7 +236,7 @@
         .pillar-card .tag {
             display: inline-block;
             padding: 5px 12px;
-            background: var(--accent);
+            background: var(--accent-bright);
             color: white;
             font-size: 0.8rem;
             font-weight: 600;
@@ -266,7 +268,7 @@
             padding: 15px 20px;
             background: var(--bg-primary);
             margin-bottom: 12px;
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid var(--accent-bright);
             font-size: 1.1rem;
             color: var(--text-secondary);
         }
@@ -302,8 +304,8 @@
         }
         
         .org-box.highlight {
-            background: var(--accent);
-            border-color: var(--accent);
+            background: var(--accent-bright);
+            border-color: var(--accent-bright);
             color: white;
         }
         
@@ -372,7 +374,7 @@
         
         .arrow-between {
             font-size: 2.5rem;
-            color: var(--accent);
+            color: var(--accent-bright);
             margin: 0 30px;
         }
         
@@ -399,7 +401,7 @@
             color: var(--bg-dark);
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 3px solid var(--accent);
+            border-bottom: 3px solid var(--accent-bright);
         }
         
         .benefit-col ul {
@@ -417,7 +419,7 @@
             content: '→';
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: var(--accent-bright);
             font-weight: bold;
         }
         
@@ -473,13 +475,13 @@
         }
         
         .partnership-item:hover {
-            border-color: var(--accent);
+            border-color: var(--accent-bright);
             transform: translateY(-5px);
         }
         
         .partnership-item .icon {
             font-size: 2rem;
-            color: var(--accent);
+            color: var(--accent-bright);
             margin-bottom: 15px;
         }
         
@@ -508,7 +510,7 @@
             padding: 25px 30px;
             background: var(--bg-primary);
             margin-bottom: 15px;
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid var(--accent-bright);
             display: flex;
             align-items: center;
             gap: 20px;
@@ -519,15 +521,15 @@
         .step-item .number {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--accent-bright);
             min-width: 50px;
         }
         
         .parallel-projects {
             margin-top: 40px;
             padding: 30px;
-            background: rgba(192, 57, 43, 0.05);
-            border: 1px solid var(--accent);
+            background: rgba(49, 130, 206, 0.05);
+            border: 1px solid var(--accent-bright);
         }
         
         .parallel-projects h4 {
@@ -598,7 +600,7 @@
             bottom: 0;
             left: 0;
             height: 4px;
-            background: var(--accent);
+            background: var(--accent-bright);
             width: 0%;
             transition: width 0.3s;
             z-index: 100;
@@ -876,27 +878,27 @@
             
             <div class="partnership-grid reveal">
                 <div class="partnership-item">
-                    <div class="icon">🔍</div>
+                    <div class="icon">☰</div>
                     <p>Diagnóstico</p>
                 </div>
                 <div class="partnership-item">
-                    <div class="icon">🏗️</div>
+                    <div class="icon">◑</div>
                     <p>Estruturação</p>
                 </div>
                 <div class="partnership-item">
-                    <div class="icon">🚀</div>
+                    <div class="icon">◐</div>
                     <p>Implantação</p>
                 </div>
                 <div class="partnership-item">
-                    <div class="icon">📚</div>
+                    <div class="icon">○</div>
                     <p>Treinamento</p>
                 </div>
                 <div class="partnership-item">
-                    <div class="icon">👁️</div>
+                    <div class="icon">◎</div>
                     <p>Acompanhamento</p>
                 </div>
                 <div class="partnership-item">
-                    <div class="icon">🤝</div>
+                    <div class="icon">◒</div>
                     <p>Transferência de conhecimento</p>
                 </div>
             </div>
