@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marques Cap — Programa de Estruturação Donna Madeiras</title>
+    <style>
+        :root {
+            --bg-primary: #F5F5F5;
+            --bg-secondary: #FFFFFF;
+            --bg-dark: #2C3E50;
+            --accent: #C0392B;
+            --accent-light: #E74C3C;
+            --text-primary: #1A1A1A;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --border: #E0E0E0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-strong: rgba(0, 0, 0, 0.15);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Slide Base Styles */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .slide-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 80px;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--bg-dark);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--bg-dark);
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--bg-dark);
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 30px;
+        }
+        
+        .small {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            color: var(--text-muted);
+        }
+        
+        /* Slide 1: Capa */
+        .slide-cover {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #34495E 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .slide-cover .slide-content {
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        .slide-cover h1 {
+            color: white;
+            font-size: clamp(3rem, 6vw, 5rem);
+        }
+        
+        .slide-cover .subtitle {
+            color: var(--accent);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: 40px;
+        }
+        
+        .slide-cover .footer {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            right: 80px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            font-size: clamp(1rem, 1.5vw, 1.3rem);
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Slide 2: O Desafio */
+        .slide-challenge {
+            background: var(--bg-primary);
+        }
+        
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .challenge-item {
+            background: var(--bg-secondary);
+            padding: 25px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        
+        .challenge-item strong {
+            display: block;
+            color: var(--bg-dark);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .urgent {
+            border-left-color: var(--accent-light);
+            background: rgba(192, 57, 43, 0.05);
+        }
+        
+        /* Slide 3: A Visão */
+        .slide-vision {
+            background: var(--bg-primary);
+            text-align: center;
+        }
+        
+        .vision-center {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .vision-text {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--bg-dark);
+            line-height: 1.3;
+            margin-bottom: 60px;
+            padding: 40px;
+            background: var(--bg-secondary);
+            border-radius: 0;
+            box-shadow: 0 4px 30px var(--shadow);
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pillar-card {
+            background: var(--bg-secondary);
+            padding: 35px 25px;
+            text-align: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .pillar-card.highlight {
+            border-color: var(--accent);
+            background: rgba(192, 57, 43, 0.03);
+        }
+        
+        .pillar-card h3 {
+            font-size: 1.3rem;
+            color: var(--bg-dark);
+            margin-bottom: 15px;
+        }
+        
+        .pillar-card .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+        
+        /* Slide 4, 5, 7: Pilares */
+        .slide-pillar {
+            background: var(--bg-secondary);
+        }
+        
+        .pillar-split {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .pillar-content {
+            flex: 1;
+        }
+        
+        .pillar-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .pillar-list li {
+            padding: 15px 20px;
+            background: var(--bg-primary);
+            margin-bottom: 12px;
+            border-left: 4px solid var(--accent);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Slide 6: Organograma */
+        .slide-orgchart {
+            background: var(--bg-primary);
+        }
+        
+        .orgchart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+        }
+        
+        .org-level {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .org-box {
+            background: var(--bg-secondary);
+            padding: 20px 40px;
+            border: 2px solid var(--bg-dark);
+            border-radius: 0;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        
+        .org-box.highlight {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .org-box.strong {
+            background: var(--bg-dark);
+            border-color: var(--bg-dark);
+            color: white;
+        }
+        
+        .org-arrow {
+            color: var(--text-muted);
+            font-size: 2rem;
+            margin: 5px 0;
+        }
+        
+        .consulting-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .consulting-item {
+            padding: 15px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Slide 8: Transição */
+        .slide-transition {
+            background: var(--bg-primary);
+        }
+        
+        .transition-steps {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 60px;
+        }
+        
+        .step-card {
+            flex: 1;
+            background: var(--bg-secondary);
+            padding: 40px 30px;
+            margin: 0 20px;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+        
+        .step-card .step-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.2;
+            margin-bottom: -20px;
+        }
+        
+        .step-card h3 {
+            font-size: 1.4rem;
+            color: var(--bg-dark);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .arrow-between {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin: 0 30px;
+        }
+        
+        /* Slide 9: Benefícios */
+        .slide-benefits {
+            background: var(--bg-secondary);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .benefit-col {
+            padding: 30px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .benefit-col h3 {
+            font-size: 1.3rem;
+            color: var(--bg-dark);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .benefit-col ul {
+            list-style: none;
+        }
+        
+        .benefit-col li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .benefit-col li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* Slide 10: Resultado Final */
+        .slide-result {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #34495E 100%);
+            color: white;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .slide-result .slide-content {
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        .slide-result .result-text {
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+            padding: 50px 80px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            margin-top: 30px;
+        }
+        
+        .slide-result .marques-donna {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 40px;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Slide 11: Papel da Marques Cap */
+        .slide-partnership {
+            background: var(--bg-secondary);
+        }
+        
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .partnership-item {
+            padding: 30px 25px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .partnership-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .partnership-item .icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .partnership-item p {
+            font-size: 1.1rem;
+            color: var(--bg-dark);
+        }
+        
+        /* Slide 12: Próximo Passo */
+        .slide-next {
+            background: var(--bg-secondary);
+        }
+        
+        .next-step-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--bg-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .steps-list {
+            margin: 50px 0;
+        }
+        
+        .step-item {
+            padding: 25px 30px;
+            background: var(--bg-primary);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        .step-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 50px;
+        }
+        
+        .parallel-projects {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(192, 57, 43, 0.05);
+            border: 1px solid var(--accent);
+        }
+        
+        .parallel-projects h4 {
+            color: var(--bg-dark);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .parallel-list {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .parallel-list li {
+            color: var(--text-secondary);
+        }
+        
+        .closeout {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border);
+            text-align: center;
+        }
+        
+        .closeout .marques-donna {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--bg-dark);
+        }
+        
+        .closeout .tagline {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--accent);
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+        
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.3s;
+            z-index: 100;
+        }
+        
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal:nth-child(2) { transition-delay: 0.1s; }
+        .reveal:nth-child(3) { transition-delay: 0.2s; }
+        .reveal:nth-child(4) { transition-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="progress-bar"></div>
+    <nav class="nav-dots"></nav>
+
+    <!-- Slide 1: Capa -->
+    <section class="slide slide-cover">
+        <div class="slide-content">
+            <h1 class="reveal">Marques Cap</h1>
+            <p class="subtitle reveal">Donna Madeiras</p>
+            <h2 class="reveal" style="font-size: clamp(1.5rem, 3vw, 2.5rem); color: white; font-weight: 500;">Programa de Estruturação Empresarial em 3 Projetos</h2>
+        </div>
+        <div class="footer reveal">Proposta apresentada por Fabricio Marques</div>
+    </section>
+
+    <!-- Slide 2: O Desafio -->
+    <section class="slide slide-challenge">
+        <div class="slide-content">
+            <h2 class="reveal">O Desafio</h2>
+            <p class="reveal subtitle">Empresas em crescimento enfrentam obstáculos estruturais</p>
+            
+            <div class="challenge-grid reveal">
+                <div class="challenge-item">
+                    <strong>Dependência dos sócios</strong>
+                    <span class="small">Decisões concentradas no topo</span>
+                </div>
+                <div class="challenge-item">
+                    <strong>Decisões informais</strong>
+                    <span class="small">Falta de protocolos definidos</span>
+                </div>
+                <div class="challenge-item">
+                    <strong>Ausência de processos</strong>
+                    <span class="small">Operações não documentadas</span>
+                </div>
+                <div class="challenge-item">
+                    <strong>Falta de indicadores</strong>
+                    <span class="small">Sem métricas de desempenho</span>
+                </div>
+                <div class="challenge-item">
+                    <strong>Baixa previsibilidade</strong>
+                    <span class="small">Dificuldade de planejamento</span>
+                </div>
+                <div class="challenge-item urgent">
+                    <strong>Recursos Humanos</strong>
+                    <span class="small">Ponto crítico urgente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: A Visão -->
+    <section class="slide slide-vision">
+        <div class="slide-content">
+            <p class="subtitle reveal">A Visão Estratégica</p>
+            <div class="vision-text reveal">
+                Transformar a Donna Madeiras em uma empresa profissionalizada, escalável e preparada para a nova planta.
+            </div>
+            
+            <div class="pillars-grid reveal">
+                <div class="pillar-card highlight">
+                    <h3>Gestão de Pessoas</h3>
+                    <p class="small">Ponto crítico</p>
+                    <span class="tag">PRIORIDADE</span>
+                </div>
+                <div class="pillar-card">
+                    <h3>Governança Corporativa</h3>
+                    <p class="small">Estrutura de poder</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Contabilidade Interna</h3>
+                    <p class="small">Inteligência financeira</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Pilar 1 — Gestão de Pessoas -->
+    <section class="slide slide-pillar">
+        <div class="slide-content">
+            <h2 class="reveal">Pilar 1 — Gestão de Pessoas</h2>
+            <p class="reveal subtitle">Implantação do RH Profissional</p>
+            <p class="reveal" style="font-size: 1.3rem; color: var(--bg-dark); margin-bottom: 30px;">
+                Criar o RH da empresa com estrutura profissional e processos definidos
+            </p>
+            
+            <ul class="pillar-list reveal">
+                <li><strong>Cargos e funções</strong> — Projeto de PCS</li>
+                <li><strong>Recrutamento</strong> — Captação de talentos</li>
+                <li><strong>Integração</strong> — Onboarding estruturado</li>
+                <li><strong>Políticas internas</strong> — Normas claras</li>
+                <li><strong>Desempenho</strong> — Avaliação contínua</li>
+                <li><strong>Liderança</strong> — Formação de gestores</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 5: Pilar 2 — Governança Corporativa -->
+    <section class="slide slide-pillar">
+        <div class="slide-content">
+            <h2 class="reveal">Pilar 2 — Governança Corporativa</h2>
+            <p class="reveal subtitle">Organização do Poder e Decisões</p>
+            <p class="reveal" style="font-size: 1.3rem; color: var(--bg-dark); margin-bottom: 30px;">
+                Organizar poder de decisão, responsabilidades e liderança
+            </p>
+            
+            <ul class="pillar-list reveal">
+                <li><strong>Papéis definidos</strong> — Funções claras</li>
+                <li><strong>Matriz de autoridade</strong> — Limite de poder</li>
+                <li><strong>Reuniões gerenciais</strong> — Cadência de decisões</li>
+                <li><strong>Indicadores</strong> — Métricas de gestão</li>
+                <li><strong>Coordenadores</strong> — Formação de equipe</li>
+                <li><strong>Função CEO</strong> — Liderança executiva</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 6: Organograma Proposto -->
+    <section class="slide slide-orgchart">
+        <div class="slide-content">
+            <h2 class="reveal" style="text-align: center;">Organograma Proposto</h2>
+            
+            <div class="orgchart-container reveal">
+                <div class="org-level">
+                    <div class="org-box strong">SÓCIOS</div>
+                </div>
+                
+                <div class="org-arrow">↓</div>
+                
+                <div class="org-level">
+                    <div class="consulting-grid">
+                        <div class="consulting-item">Jurídico</div>
+                        <div class="consulting-item">Contabilidade</div>
+                        <div class="consulting-item">Gestão de Negócios</div>
+                        <div class="consulting-item">Engenharia</div>
+                    </div>
+                </div>
+                
+                <div class="org-arrow">↓</div>
+                
+                <div class="org-level">
+                    <div class="org-box highlight">CEO</div>
+                </div>
+                
+                <div class="org-arrow">↓</div>
+                
+                <div class="org-level">
+                    <div class="org-box">COORDENADORES</div>
+                </div>
+                
+                <div class="org-arrow">↓</div>
+                
+                <div class="org-level">
+                    <div class="org-box">EQUIPES</div>
+                </div>
+            </div>
+            
+            <p class="reveal small" style="text-align: center; margin-top: 40px; color: var(--accent-light);">
+                O CEO como ponto central de execução da estratégia
+            </p>
+        </div>
+    </section>
+
+    <!-- Slide 7: Pilar 3 — Internalização da Contabilidade -->
+    <section class="slide slide-pillar">
+        <div class="slide-content">
+            <h2 class="reveal">Pilar 3 — Internalização da Contabilidade</h2>
+            <p class="reveal subtitle">Inteligência Contábil, Fiscal e Trabalhista</p>
+            <p class="reveal" style="font-size: 1.3rem; color: var(--bg-dark); margin-bottom: 30px;">
+                Trazer inteligência contábil para dentro da empresa
+            </p>
+            
+            <ul class="pillar-list reveal">
+                <li><strong>Folha de pagamento</strong> — Gestão de pessoal e obrigações</li>
+                <li><strong>Fiscal e tributos</strong> — Apuração e compliance</li>
+                <li><strong>Contabilidade gerencial</strong> — Relatórios estratégicos</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 8: Modelo de Transição -->
+    <section class="slide slide-transition">
+        <div class="slide-content">
+            <h2 class="reveal" style="text-align: center;">Modelo de Transição</h2>
+            
+            <div class="transition-steps reveal">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Fase 1</h3>
+                    <p style="margin: 0;">Operação interna supervisionada</p>
+                </div>
+                
+                <div class="arrow-between">→</div>
+                
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Fase 2</h3>
+                    <p style="margin: 0;">Operação interna autônoma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Benefícios Esperados -->
+    <section class="slide slide-benefits">
+        <div class="slide-content">
+            <h2 class="reveal" style="text-align: center;">Benefícios Esperados</h2>
+            
+            <div class="benefits-grid reveal">
+                <div class="benefit-col">
+                    <h3>Pessoas</h3>
+                    <ul>
+                        <li>Equipe organizada</li>
+                        <li>Menor rotatividade</li>
+                        <li>Liderança formada</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-col">
+                    <h3>Gestão</h3>
+                    <ul>
+                        <li>Decisões mais rápidas</li>
+                        <li>Indicadores confiáveis</li>
+                        <li>Menor dependência dos sócios</li>
+                    </ul>
+                </div>
+                
+                <div class="benefit-col">
+                    <h3>Financeiro</h3>
+                    <ul>
+                        <li>Maior controle</li>
+                        <li>Informação em tempo real</li>
+                        <li>Planejamento mais seguro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Resultado Final -->
+    <section class="slide slide-result">
+        <div class="slide-content">
+            <p class="reveal subtitle" style="color: var(--accent);">O Resultado</p>
+            <div class="result-text reveal">
+                A Donna Madeiras deixa de ser apenas uma empresa operacional e passa a funcionar como uma organização estruturada, profissional e preparada para expansão.
+            </div>
+            <div class="marques-donna reveal">Donna Madeiras + Marques Cap</div>
+        </div>
+    </section>
+
+    <!-- Slide 11: Papel da Marques Cap -->
+    <section class="slide slide-partnership">
+        <div class="slide-content">
+            <h2 class="reveal" style="text-align: center;">Papel da Marques Cap</h2>
+            
+            <div class="partnership-grid reveal">
+                <div class="partnership-item">
+                    <div class="icon">🔍</div>
+                    <p>Diagnóstico</p>
+                </div>
+                <div class="partnership-item">
+                    <div class="icon">🏗️</div>
+                    <p>Estruturação</p>
+                </div>
+                <div class="partnership-item">
+                    <div class="icon">🚀</div>
+                    <p>Implantação</p>
+                </div>
+                <div class="partnership-item">
+                    <div class="icon">📚</div>
+                    <p>Treinamento</p>
+                </div>
+                <div class="partnership-item">
+                    <div class="icon">👁️</div>
+                    <p>Acompanhamento</p>
+                </div>
+                <div class="partnership-item">
+                    <div class="icon">🤝</div>
+                    <p>Transferência de conhecimento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 12: Próximo Passo -->
+    <section class="slide slide-next">
+        <div class="slide-content">
+            <h2 class="next-step-title reveal">Aprovação do Programa de Estruturação Empresarial</h2>
+            
+            <div class="steps-list reveal">
+                <div class="step-item">
+                    <span class="number">01</span>
+                    <span>Gestão de Pessoas</span>
+                </div>
+                <div class="step-item">
+                    <span class="number">02</span>
+                    <span>Governança Corporativa</span>
+                </div>
+                <div class="step-item">
+                    <span class="number">03</span>
+                    <span>Internalização da Contabilidade</span>
+                </div>
+            </div>
+            
+            <div class="parallel-projects reveal">
+                <h4>Projetos Paralelos</h4>
+                <ul class="parallel-list">
+                    <li>• Plano de cargos e salários</li>
+                    <li>• Treinamento em rotinas com IA</li>
+                    <li>• Implementação de POP</li>
+                </ul>
+            </div>
+            
+            <div class="closeout reveal">
+                <div class="marques-donna">Donna Madeiras + Marques Cap</div>
+                <p class="tagline">Construindo uma empresa preparada para o próximo nível</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation Controller
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.dotsContainer = document.querySelector('.nav-dots');
+                this.progressBar = document.querySelector('.progress-bar');
+                this.init();
+            }
+            
+            init() {
+                this.setupNavDots();
+                this.setupObserver();
+                this.setupKeyboard();
+                this.setupTouch();
+                this.updateUI();
+            }
+            
+            setupNavDots() {
+                this.slides.forEach((_, i) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'nav-dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goTo(i));
+                    this.dotsContainer.appendChild(dot);
+                });
+                this.dots = document.querySelectorAll('.nav-dot');
+            }
+            
+            setupObserver() {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const idx = Array.from(this.slides).indexOf(entry.target);
+                            this.currentSlide = idx;
+                            this.updateUI();
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+            
+            setupKeyboard() {
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        this.next();
+                    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        this.prev();
+                    }
+                });
+            }
+            
+            setupTouch() {
+                let startY = 0;
+                document.addEventListener('touchstart', e => startY = e.touches[0].screenY);
+                document.addEventListener('touchend', e => {
+                    const diff = startY - e.changedTouches[0].screenY;
+                    if (diff > 50) this.next();
+                    else if (diff < -50) this.prev();
+                });
+            }
+            
+            goTo(idx) {
+                if (idx >= 0 && idx < this.slides.length) {
+                    this.slides[idx].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            
+            next() {
+                if (this.currentSlide < this.slides.length - 1) {
+                    this.goTo(this.currentSlide + 1);
+                }
+            }
+            
+            prev() {
+                if (this.currentSlide > 0) {
+                    this.goTo(this.currentSlide - 1);
+                }
+            }
+            
+            updateUI() {
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentSlide);
+                });
+                const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+                this.progressBar.style.width = `${progress}%`;
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
+    </script>
+</body>
+</html>
