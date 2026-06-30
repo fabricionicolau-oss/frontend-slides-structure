@@ -6,20 +6,20 @@
     <title>QORE COGNITIVA — Pitch Deck</title>
     <style>
         :root {
-            /* Paleta de Cores - Dark Enterprise */
-            --bg-primary: #F5F5F5;
-            --bg-secondary: #FFFFFF;
-            --bg-dark: #0A0A0A;
-            --bg-navy: #0F0F0F;
-            --accent: #0066CC;
-            --accent-light: #1E40AF;
-            --accent-bright: #3B82F6;
+            /* Paleta Premium - Branco com Vermelho */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FAFAFA;
+            --bg-dark: #1A1A1A;
+            --accent: #B91C1C;
+            --accent-light: #DC2626;
+            --accent-bright: #EF4444;
+            --accent-lighter: #FECACA;
             --text-primary: #1A1A1A;
             --text-secondary: #4A5568;
             --text-muted: #718096;
             --border: #E2E8F0;
             --shadow: rgba(0, 0, 0, 0.08);
-            --shadow-strong: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(185, 28, 28, 0.15);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
         /* Slide Base Styles */
         .slide {
             width: 100vw;
-            height: 100vh;
+            min-height: 100vh;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -42,70 +42,124 @@
             justify-content: center;
         }
         
+        /* Fundo Geométrico Transparente */
+        .slide::before,
+        .slide::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            pointer-events: none;
+            opacity: 0.08;
+            z-index: 0;
+        }
+        
+        .slide::before {
+            top: -100px;
+            left: -100px;
+            background: 
+                repeating-linear-gradient(45deg, var(--accent-bright) 0px, var(--accent-bright) 1px, transparent 1px, transparent 30px),
+                repeating-linear-gradient(-45deg, var(--accent-bright) 0px, var(--accent-bright) 1px, transparent 1px, transparent 30px);
+            transform: rotate(15deg);
+        }
+        
+        .slide::after {
+            bottom: -100px;
+            right: -100px;
+            background: 
+                repeating-linear-gradient(135deg, var(--accent-bright) 0px, var(--accent-bright) 1px, transparent 1px, transparent 30px),
+                repeating-linear-gradient(-135deg, var(--accent-bright) 0px, var(--accent-bright) 1px, transparent 1px, transparent 30px);
+            transform: rotate(-15deg);
+        }
+        
         .slide-content {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 80px;
+            padding: 80px 60px;
             position: relative;
             z-index: 1;
         }
         
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 40px 20px;
+            }
+            .slide {
+                min-height: auto;
+                padding: 40px 0;
+            }
+        }
+        
         /* Typography */
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 24px;
         }
         
         h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
             font-weight: 600;
+            color: var(--text-primary);
             line-height: 1.2;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
         
         h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
             font-weight: 600;
-            margin-bottom: 20px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
         }
         
         p {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            margin-bottom: 15px;
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
         }
         
         .subtitle {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-size: clamp(1rem, 2vw, 1.3rem);
             font-weight: 500;
-            margin-bottom: 30px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
         }
         
-        /* Slide 1: Capa Dark */
+        .small {
+            font-size: clamp(0.85rem, 1.4vw, 1rem);
+            color: var(--text-muted);
+        }
+        
+        /* Slide 1: Capa */
         .slide-cover {
-            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #2A2A2A 100%);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #2D2D2D 50%, #404040 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         
         .slide-cover .slide-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-            text-align: center;
+            max-width: 900px;
         }
         
         .cover-badge {
             display: inline-block;
-            padding: 8px 24px;
-            border: 1px solid rgba(59, 130, 246, 0.5);
+            padding: 10px 28px;
+            border: 1px solid rgba(239, 68, 68, 0.5);
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 20px;
+            color: var(--accent-bright);
+            margin-bottom: 24px;
+            background: rgba(239, 68, 68, 0.1);
         }
         
         .cover-title {
@@ -113,17 +167,19 @@
             color: white;
             font-weight: 800;
             margin: 40px 0 20px;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
+            line-height: 1;
         }
         
         .cover-subtitle {
-            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-            color: rgba(255,255,255,0.8);
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+            color: rgba(255,255,255,0.85);
             font-weight: 400;
-            margin: 40px 0;
-            max-width: 800px;
+            margin: 48px 0;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
         
         .cover-footer {
@@ -131,550 +187,165 @@
             font-size: 1rem;
             opacity: 0.7;
             color: rgba(255,255,255,0.7);
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
         
-        /* Slide 2: Problema */
-        .slide-problem {
-            background: var(--bg-secondary);
-        }
-        
-        .problem-grid {
+        /* Layouts */
+        .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 40px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
         
-        .problem-col h3 {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--accent-bright);
-        }
-        
-        .problem-list li {
-            padding: 15px 0 15px 30px;
-            position: relative;
-            list-style: none;
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .problem-list li::before {
-            content: '✗';
-            position: absolute;
-            left: 0;
-            color: #DC2626;
-            font-weight: bold;
-        }
-        
-        .impact-box {
-            margin-top: 60px;
-            padding: 40px;
-            background: #FEF2F2;
-            border-left: 5px solid #DC2626;
-            border-radius: 8px;
-        }
-        
-        .impact-box strong {
-            font-size: 1.4rem;
-            color: #991B1B;
-        }
-        
-        /* Slide 3: Solução */
-        .slide-solution {
-            background: var(--bg-secondary);
-        }
-        
-        .solution-grid {
+        .grid-3 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
         
-        .solution-item {
-            padding: 30px;
-            background: var(--bg-primary);
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-secondary);
+            padding: 32px 28px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px var(--shadow-strong);
+            border-color: var(--accent-bright);
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            stroke: var(--accent-bright);
+            stroke-width: 1.5;
+            fill: none;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+        
+        .card h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Tables */
+        .table-modern {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 32px;
+            font-size: 1rem;
+        }
+        
+        .table-modern th {
+            background: var(--accent);
+            color: white;
+            padding: 18px 24px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .table-modern td {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .table-modern tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table-modern tr:hover td {
+            background: rgba(239, 68, 68, 0.03);
+        }
+        
+        /* Boxes */
+        .highlight-box {
+            margin-top: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.02) 100%);
+            border-left: 5px solid var(--accent);
             border-radius: 12px;
-            box-shadow: 0 4px 15px var(--shadow);
         }
         
-        .solution-item strong {
+        .highlight-box strong {
             display: block;
             font-size: 1.3rem;
-            color: var(--accent-bright);
-            margin-bottom: 10px;
-        }
-        
-        .solution-item span {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
+            color: var(--accent);
+            margin-bottom: 8px;
         }
         
         .quote-box {
-            margin-top: 60px;
+            margin-top: 48px;
             padding: 40px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+            background: var(--bg-secondary);
+            border-radius: 16px;
             border-left: 5px solid var(--accent-bright);
-            border-radius: 8px;
+            position: relative;
         }
         
         .quote-box p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-style: italic;
             color: var(--text-primary);
+            margin-bottom: 0;
         }
         
-        /* Slide 4: Produto */
-        .slide-product {
-            background: var(--bg-primary);
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .product-card {
-            background: var(--bg-secondary);
-            padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px var(--shadow-strong);
-        }
-        
-        .product-card h3 {
-            font-size: 1.4rem;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .product-icon {
-            width: 32px;
-            height: 32px;
-            stroke: var(--accent-bright);
-            stroke-width: 1.5;
-            fill: none;
-            opacity: 0.8;
-        }
-        
-        .product-card ul {
+        /* Lists */
+        .check-list {
             list-style: none;
         }
         
-        .product-card li {
-            padding: 10px 0 10px 25px;
+        .check-list li {
+            padding: 14px 0 14px 40px;
             position: relative;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
-        }
-        
-        .product-card li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-bright);
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-        
-        .icon-muted {
-            width: 20px;
-            height: 20px;
-            stroke: var(--accent-bright);
-            stroke-width: 1.5;
-            fill: none;
-            margin-right: 12px;
-            vertical-align: middle;
-            opacity: 0.7;
-        }
-        
-        .agents-section {
-            margin-top: 40px;
-            padding: 30px;
-            background: var(--bg-secondary);
-            border-radius: 12px;
-        }
-        
-        .agents-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .agent-item {
-            padding: 15px;
-            background: var(--bg-primary);
-            border-radius: 8px;
-        }
-        
-        .agent-item strong {
-            color: var(--accent-bright);
-        }
-        
-        /* Slide 5: Mercado */
-        .slide-market {
-            background: var(--bg-secondary);
-        }
-        
-        .market-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 40px;
-            font-size: 1.1rem;
-        }
-        
-        .market-table th {
-            background: var(--bg-dark);
-            color: white;
-            padding: 20px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        .market-table td {
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
-        
-        .market-table tr:hover {
-            background: rgba(59, 130, 246, 0.05);
-        }
-        
-        .market-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .stat-card {
-            padding: 30px;
-            background: var(--bg-primary);
-            border-radius: 12px;
-            text-align: center;
-            border: 2px solid var(--accent-bright);
-        }
-        
-        .stat-card strong {
-            display: block;
-            font-size: 2rem;
-            color: var(--accent-bright);
-            margin-bottom: 10px;
-        }
-        
-        .stat-card span {
-            color: var(--text-secondary);
-        }
-        
-        /* Slide 6: Modelo de Negócio */
-        .slide-business {
-            background: var(--bg-primary);
-        }
-        
-        .vault-box {
-            background: var(--bg-dark);
-            color: white;
-            padding: 40px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-        }
-        
-        .vault-box h3 {
-            color: var(--accent-bright);
-            margin-bottom: 20px;
-        }
-        
-        .vault-box ul {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .vault-box li {
-            padding: 8px 0;
-            color: rgba(255,255,255,0.9);
-        }
-        
-        .tiers-box {
-            padding: 30px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-        }
-        
-        .tiers-row {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-        
-        .tier-item {
-            text-align: center;
-            padding: 20px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 8px;
-            min-width: 120px;
-        }
-        
-        .tier-item strong {
-            display: block;
-            font-size: 1.5rem;
-            color: var(--accent-bright);
-            margin-bottom: 10px;
-        }
-        
-        .sphere-box {
-            margin-top: 30px;
-            padding: 40px;
-            background: var(--bg-dark);
-            color: white;
-            border-radius: 16px;
-        }
-        
-        .total-investment {
-            margin-top: 40px;
-            padding: 40px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px var(--shadow-strong);
-        }
-        
-        .total-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .total-table th {
-            background: var(--accent-bright);
-            color: white;
-            padding: 15px;
-            text-align: left;
-        }
-        
-        .total-table td {
-            padding: 15px;
             border-bottom: 1px solid var(--border);
         }
         
-        .total-table .total-col {
-            text-align: right;
-            font-weight: bold;
-            color: var(--accent-bright);
-            font-size: 1.3rem;
+        .check-list li:last-child {
+            border-bottom: none;
         }
         
-        /* Slide 7: Diferenciais */
-        .slide-differentiators {
-            background: var(--bg-secondary);
-        }
-        
-        .diff-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 40px;
-            font-size: 1.1rem;
-        }
-        
-        .diff-table th {
-            padding: 20px;
-            background: var(--bg-dark);
-            color: white;
-            text-align: left;
-        }
-        
-        .diff-table td {
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .diff-table .qore-col {
-            background: rgba(59, 130, 246, 0.05);
-            font-weight: 600;
-            color: var(--accent-bright);
-        }
-        
-        .barriers {
-            margin-top: 40px;
-            padding: 30px;
-            background: var(--bg-primary);
-            border-radius: 12px;
-        }
-        
-        .barriers h3 {
-            margin-bottom: 20px;
-        }
-        
-        .barriers ul {
-            list-style: none;
-        }
-        
-        .barriers li {
-            padding: 10px 0 10px 30px;
-            position: relative;
-            font-size: 1.1rem;
-        }
-        
-        .barriers li::before {
+        .check-list li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #10B981;
+            color: var(--accent);
             font-weight: bold;
-        }
-        
-        /* Slide 8: Roadmap */
-        .slide-roadmap {
-            background: var(--bg-primary);
-        }
-        
-        .roadmap-section {
-            margin-top: 50px;
-        }
-        
-        .roadmap-title {
-            font-size: 1.5rem;
-            color: var(--accent-bright);
-            margin-bottom: 20px;
-            padding-left: 20px;
-            border-left: 4px solid var(--accent-bright);
-        }
-        
-        .roadmap-list {
-            list-style: none;
-            margin-left: 20px;
-        }
-        
-        .roadmap-list li {
-            padding: 12px 0 12px 30px;
-            position: relative;
-            font-size: 1.1rem;
-        }
-        
-        .roadmap-list li::before {
-            position: absolute;
-            left: 0;
             font-size: 1.2rem;
         }
         
-        .completed li::before {
-            content: '✓';
-            color: #10B981;
+        .icon-list li::before {
+            content: '✗';
+            color: var(--accent-light);
         }
         
-        .ongoing li::before {
-            content: '•';
-            color: #F59E0B;
-        }
-        
-        .upcoming li::before {
-            content: '○';
-            color: var(--text-muted);
-        }
-        
-        /* Slide 9: O Pedido */
-        .slide-request {
-            background: var(--bg-secondary);
-        }
-        
-        .request-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 40px;
-            font-size: 1.2rem;
-        }
-        
-        .request-table th {
-            padding: 20px;
-            background: var(--bg-dark);
-            color: white;
-            text-align: left;
-        }
-        
-        .request-table td {
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .offer-section {
-            margin-top: 40px;
-            padding: 40px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
-            border-radius: 12px;
-            border-left: 5px solid #10B981;
-        }
-        
-        .offer-section strong {
-            color: #065F46;
-            font-size: 1.3rem;
-        }
-        
-        .closeout-phrase {
-            margin-top: 40px;
-            padding: 40px;
-            background: var(--bg-dark);
-            color: white;
-            border-radius: 12px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-style: italic;
-        }
-        
-        /* Slide 10: Contato */
-        .slide-contact {
-            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
-        }
-        
-        .slide-contact .slide-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            height: 100%;
-        }
-        
-        .contact-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: white;
-            font-weight: 700;
-            margin-bottom: 40px;
-        }
-        
-        .contact-info {
-            margin: 40px 0;
-        }
-        
-        .contact-info strong {
-            display: block;
-            font-size: 2rem;
-            color: var(--accent-bright);
-            margin-bottom: 10px;
-        }
-        
-        .contact-details {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 2;
-        }
-        
-        .final-phrase {
-            margin-top: 60px;
-            padding: 40px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: rgba(255,255,255,0.9);
-        }
-        
-        /* Navegação */
+        /* Navigation */
         .nav-dots {
             position: fixed;
             right: 30px;
@@ -696,8 +367,9 @@
         }
         
         .nav-dot.active {
-            background: var(--accent-bright);
-            transform: scale(1.3);
+            background: var(--accent);
+            transform: scale(1.4);
+            box-shadow: 0 0 0 4px rgba(185, 28, 28, 0.2);
         }
         
         .progress-bar {
@@ -705,17 +377,17 @@
             bottom: 0;
             left: 0;
             height: 4px;
-            background: var(--accent-bright);
+            background: var(--accent);
             width: 0%;
             transition: width 0.3s;
             z-index: 100;
         }
         
-        /* Animações */
+        /* Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
         
         .slide.visible .reveal {
@@ -723,9 +395,9 @@
             transform: translateY(0);
         }
         
-        .reveal:nth-child(2) { transition-delay: 0.1s; }
-        .reveal:nth-child(3) { transition-delay: 0.2s; }
-        .reveal:nth-child(4) { transition-delay: 0.3s; }
+        .reveal:nth-child(2) { transition-delay: 0.08s; }
+        .reveal:nth-child(3) { transition-delay: 0.16s; }
+        .reveal:nth-child(4) { transition-delay: 0.24s; }
     </style>
 </head>
 <body>
@@ -751,32 +423,20 @@
         <div class="slide-content">
             <h2 class="reveal">O conhecimento está preso</h2>
             
-            <div class="problem-grid reveal">
+            <div class="grid-2 reveal">
                 <div class="problem-col">
                     <h3>Empresas acumulam conhecimento em:</h3>
-                    <ul class="problem-list">
-                        <li>
-                            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                            Pastas, drives, sistemas dispersos
-                        </li>
-                        <li>
-                            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            E-mails, planilhas, PDFs
-                        </li>
-                        <li>
-                            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                            POPs e normas não consultados
-                        </li>
-                        <li>
-                            <svg class="icon-muted" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            Pessoas-chave que saem e levam o conhecimento
-                        </li>
+                    <ul class="check-list">
+                        <li>Pastas, drives, sistemas dispersos</li>
+                        <li>E-mails, planilhas, PDFs</li>
+                        <li>POPs e normas não consultados</li>
+                        <li>Pessoas-chave que saem e levam o conhecimento</li>
                     </ul>
                 </div>
                 
                 <div class="problem-col">
                     <h3>Consequências:</h3>
-                    <ul class="problem-list">
+                    <ul class="check-list icon-list">
                         <li>Informação difícil de encontrar</li>
                         <li>Dependência excessiva de pessoas específicas</li>
                         <li>Perda de conhecimento quando colaboradores saem</li>
@@ -786,8 +446,9 @@
                 </div>
             </div>
             
-            <div class="impact-box reveal">
-                <p>"Empresas perdem até <strong>R$ 3 milhões/ano</strong> em produtividade por conhecimento não estruturado."</p>
+            <div class="highlight-box reveal">
+                <strong>Empresas perdem até R$ 3 milhões/ano</strong>
+                <p>em produtividade por conhecimento não estruturado.</p>
             </div>
         </div>
     </section>
@@ -797,25 +458,30 @@
         <div class="slide-content">
             <h2 class="reveal">Uma camada de inteligência sobre o conhecimento interno</h2>
             
-            <div class="solution-grid reveal">
-                <div class="solution-item">
-                    <strong>Repositório estruturado</strong>
+            <div class="grid-3 reveal">
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line></svg>
+                    <h3>Repositório estruturado</h3>
                     <span>Tudo em um lugar, organizado</span>
                 </div>
-                <div class="solution-item">
-                    <strong>IA privada que consulta a base</strong>
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <h3>IA privada que consulta</h3>
                     <span>Respostas baseadas em fontes internas</span>
                 </div>
-                <div class="solution-item">
-                    <strong>Agentes especializados por função</strong>
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <h3>Agentes especializados</h3>
                     <span>Cada área tem seu especialista</span>
                 </div>
-                <div class="solution-item">
-                    <strong>Controle de acesso e auditoria</strong>
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <h3>Controle e auditoria</h3>
                     <span>Segurança e governança</span>
                 </div>
-                <div class="solution-item">
-                    <strong>Rastreabilidade de fontes</strong>
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    <h3>Rastreabilidade</h3>
                     <span>Sempre sabe de onde veio a resposta</span>
                 </div>
             </div>
@@ -831,13 +497,11 @@
         <div class="slide-content">
             <h2 class="reveal">Brain Vault + Sphere</h2>
             
-            <div class="product-grid reveal">
-                <div class="product-card">
-                    <h3>
-                        <svg class="product-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
-                        BRAIN VAULT
-                    </h3>
-                    <ul>
+            <div class="grid-2 reveal">
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
+                    <h3>🧠 BRAIN VAULT (Infraestrutura)</h3>
+                    <ul class="check-list">
                         <li>Servidor de IA privada (local ou VPS)</li>
                         <li>Modelos de linguagem locais</li>
                         <li>RAG (Retrieval-Augmented Generation)</li>
@@ -846,12 +510,10 @@
                     </ul>
                 </div>
                 
-                <div class="product-card">
-                    <h3>
-                        <svg class="product-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        SPHERE
-                    </h3>
-                    <ul>
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <h3>🔮 SPHERE (Interface)</h3>
+                    <ul class="check-list">
                         <li>Plataforma de visualização do conhecimento</li>
                         <li>Editor Markdown integrado</li>
                         <li>Mapa de conhecimento (grafo)</li>
@@ -860,24 +522,24 @@
                 </div>
             </div>
             
-            <div class="agents-section reveal">
-                <h3>Agentes Cognitivos</h3>
-                <div class="agents-grid">
-                    <div class="agent-item">
-                        <svg class="product-icon" style="width:24px;height:24px;vertical-align:middle;margin-right:8px" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                        <strong>Mr. Cole</strong> → Operacional (POPs, processos)
+            <div class="card reveal" style="margin-top: 40px;">
+                <h3>🤖 Agentes Cognitivos</h3>
+                <div class="grid-3">
+                    <div>
+                        <strong>Mr. Cole</strong><br>
+                        <span class="small">Operacional (POPs, processos)</span>
                     </div>
-                    <div class="agent-item">
-                        <svg class="product-icon" style="width:24px;height:24px;vertical-align:middle;margin-right:8px" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6m8-9h-6m-6 0H1m15.5-6.5l-4.25 4.25m-4.5 4.5L4.5 19.5m11 0l-4.25-4.25"></path></svg>
-                        <strong>Ângelo</strong> → Institucional (estratégia, missão, visão)
+                    <div>
+                        <strong>Ângelo</strong><br>
+                        <span class="small">Institucional (estratégia, missão, visão)</span>
                     </div>
-                    <div class="agent-item">
-                        <svg class="product-icon" style="width:24px;height:24px;vertical-align:middle;margin-right:8px" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        <strong>Clara</strong> → Compliance e governança (futuro)
+                    <div>
+                        <strong>Clara</strong><br>
+                        <span class="small">Compliance e governança (futuro)</span>
                     </div>
-                    <div class="agent-item">
-                        <svg class="product-icon" style="width:24px;height:24px;vertical-align:middle;margin-right:8px" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        <strong>Celso</strong> → Dados cadastrais (futuro)
+                    <div>
+                        <strong>Celso</strong><br>
+                        <span class="small">Dados cadastrais (futuro)</span>
                     </div>
                 </div>
             </div>
@@ -889,7 +551,7 @@
         <div class="slide-content">
             <h2 class="reveal">Um mercado em expansão</h2>
             
-            <table class="market-table reveal">
+            <table class="table-modern reveal">
                 <thead>
                     <tr>
                         <th>Setor</th>
@@ -898,53 +560,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Escritórios profissionais</td>
-                        <td>POPs, treinamento, padronização</td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                    </tr>
-                    <tr>
-                        <td>Indústrias</td>
-                        <td>Procedimentos, qualidade, ISO</td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                    </tr>
-                    <tr>
-                        <td>Hospitais e clínicas</td>
-                        <td>Protocolos, normas internas</td>
-                        <td>⭐⭐⭐⭐</td>
-                    </tr>
-                    <tr>
-                        <td>Órgãos públicos</td>
-                        <td>Legislação, processos administrativos</td>
-                        <td>⭐⭐⭐⭐</td>
-                    </tr>
-                    <tr>
-                        <td>Cartórios</td>
-                        <td>Procedimentos cartorários</td>
-                        <td>⭐⭐⭐⭐</td>
-                    </tr>
-                    <tr>
-                        <td>Grandes corporações</td>
-                        <td>Memória institucional, compliance</td>
-                        <td>⭐⭐⭐⭐⭐</td>
-                    </tr>
+                    <tr><td>Escritórios profissionais</td><td>POPs, treinamento, padronização</td><td>⭐⭐⭐⭐⭐</td></tr>
+                    <tr><td>Indústrias</td><td>Procedimentos, qualidade, ISO</td><td>⭐⭐⭐⭐⭐</td></tr>
+                    <tr><td>Hospitais e clínicas</td><td>Protocolos, normas internas</td><td>⭐⭐⭐⭐</td></tr>
+                    <tr><td>Órgãos públicos</td><td>Legislação, processos administrativos</td><td>⭐⭐⭐⭐</td></tr>
+                    <tr><td>Cartórios</td><td>Procedimentos cartorários</td><td>⭐⭐⭐⭐</td></tr>
+                    <tr><td>Grandes corporações</td><td>Memória institucional, compliance</td><td>⭐⭐⭐⭐⭐</td></tr>
                 </tbody>
             </table>
             
-            <div class="market-stats reveal">
-                <div class="stat-card">
-                    <svg class="product-icon" style="width:40px;height:40px;margin-bottom:15px" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                    <strong>5M+</strong>
+            <div class="grid-3 reveal" style="margin-top: 40px;">
+                <div class="card" style="text-align: center; border: 2px solid var(--accent);">
+                    <svg class="card-icon" style="width:48px;height:48px;margin:0 auto 16px" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    <strong style="display:block;font-size:2rem;margin-bottom:8px;">5M+</strong>
                     <span>PMEs no Brasil</span>
                 </div>
-                <div class="stat-card">
-                    <svg class="product-icon" style="width:40px;height:40px;margin-bottom:15px" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    <strong>300M+</strong>
+                <div class="card" style="text-align: center; border: 2px solid var(--accent);">
+                    <svg class="card-icon" style="width:48px;height:48px;margin:0 auto 16px" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <strong style="display:block;font-size:2rem;margin-bottom:8px;">300M+</strong>
                     <span>Empresas no mundo</span>
                 </div>
-                <div class="stat-card">
-                    <svg class="product-icon" style="width:40px;height:40px;margin-bottom:15px" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-                    <strong>US$ 50 bi</strong>
+                <div class="card" style="text-align: center; border: 2px solid var(--accent);">
+                    <svg class="card-icon" style="width:48px;height:48px;margin:0 auto 16px" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                    <strong style="display:block;font-size:2rem;margin-bottom:8px;">US$ 50 bi</strong>
                     <span>Mercado IA enterprise até 2027</span>
                 </div>
             </div>
@@ -956,77 +594,62 @@
         <div class="slide-content">
             <h2 class="reveal">Como geramos receita</h2>
             
-            <div class="vault-box reveal">
-                <h3>
-                    <svg class="product-icon" style="opacity:0.9" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
-                    BRAIN VAULT (Infraestrutura)
-                </h3>
-                <ul>
-                    <li>Servidor de IA privada (local ou VPS)</li>
-                    <li>Modelos de linguagem locais</li>
-                    <li>RAG (Retrieval-Augmented Generation)</li>
-                    <li>Agentes especializados</li>
-                    <li>Governança, logs, auditoria</li>
-                </ul>
-                <div class="tiers-box">
-                    <p><strong>IMPLANTAÇÃO (one-time):</strong></p>
-                    <div class="tiers-row">
-                        <div class="tier-item"><strong>NODE</strong>R$ 60k</div>
-                        <div class="tier-item"><strong>CORE</strong>R$ 90k</div>
-                        <div class="tier-item"><strong>SOVEREIGN</strong>R$ 120k</div>
-                    </div>
+            <div class="grid-2 reveal">
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
+                    <h3>🧠 BRAIN VAULT (Infraestrutura)</h3>
+                    <ul class="check-list">
+                        <li>Servidor de IA privada (local ou VPS)</li>
+                        <li>Modelos de linguagem locais</li>
+                        <li>RAG (Retrieval-Augmented Generation)</li>
+                        <li>Agentes especializados</li>
+                        <li>Governança, logs, auditoria</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <h3>🔮 SPHERE 4 (Inteligência)</h3>
+                    <ul class="check-list">
+                        <li>Plataforma de visualização do conhecimento</li>
+                        <li>Editor Markdown integrado</li>
+                        <li>Mapa de conhecimento (grafo)</li>
+                        <li>Agentes cognitivos especializados</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="sphere-box reveal">
-                <h3>
-                    <svg class="product-icon" style="opacity:0.9" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    SPHERE 4 (Inteligência)
-                </h3>
-                <ul>
-                    <li>Plataforma de visualização do conhecimento</li>
-                    <li>Editor Markdown integrado</li>
-                    <li>Mapa de conhecimento (grafo)</li>
-                    <li>Agentes cognitivos especializados</li>
-                </ul>
-                <p style="margin-top: 20px;"><strong>LICENÇA + DESENVOLVIMENTO:</strong> A partir de R$ 100.000 (10 meses = ~R$ 10k/mês)</p>
+            <div class="highlight-box reveal" style="margin-top: 40px;">
+                <p><strong>IMPLANTAÇÃO (one-time):</strong></p>
+                <div class="grid-3" style="margin: 24px 0;">
+                    <div style="text-align:center;padding:20px;background:rgba(239,68,68,0.05);border-radius:12px;">
+                        <strong style="color:var(--accent);font-size:1.5rem;">NODE</strong>
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--accent-bright);">R$ 60k</div>
+                    </div>
+                    <div style="text-align:center;padding:20px;background:rgba(239,68,68,0.05);border-radius:12px;">
+                        <strong style="color:var(--accent);font-size:1.5rem;">CORE</strong>
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--accent-bright);">R$ 90k</div>
+                    </div>
+                    <div style="text-align:center;padding:20px;background:rgba(239,68,68,0.05);border-radius:12px;">
+                        <strong style="color:var(--accent);font-size:1.5rem;">SOVEREIGN</strong>
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--accent-bright);">R$ 120k</div>
+                    </div>
+                </div>
+                <p><strong>LICENÇA SPHERE 4:</strong> R$ 100.000 (10 meses = ~R$ 10k/mês)</p>
             </div>
             
-            <div class="total-investment reveal">
-                <h3 style="text-align: center; margin-bottom: 20px;">Investimento Total (12 meses)</h3>
-                <table class="total-table">
-                    <thead>
-                        <tr>
-                            <th>Pacote</th>
-                            <th>Brain Vault</th>
-                            <th>Sphere 4</th>
-                            <th class="total-col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>NODE</strong></td>
-                            <td>R$ 60.000</td>
-                            <td>R$ 100.000</td>
-                            <td class="total-col">R$ 160.000</td>
-                        </tr>
-                        <tr>
-                            <td><strong>CORE</strong></td>
-                            <td>R$ 90.000</td>
-                            <td>R$ 100.000</td>
-                            <td class="total-col">R$ 190.000</td>
-                        </tr>
-                        <tr>
-                            <td><strong>SOVEREIGN</strong></td>
-                            <td>R$ 120.000</td>
-                            <td>R$ 100.000</td>
-                            <td class="total-col">R$ 220.000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table class="table-modern reveal" style="margin-top: 32px;">
+                <thead>
+                    <tr><th>Pacote</th><th>Brain Vault</th><th>Sphere 4</th><th>Total</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>NODE</strong></td><td>R$ 60.000</td><td>R$ 100.000</td><td><strong>R$ 160.000</strong></td></tr>
+                    <tr><td><strong>CORE</strong></td><td>R$ 90.000</td><td>R$ 100.000</td><td><strong>R$ 190.000</strong></td></tr>
+                    <tr><td><strong>SOVEREIGN</strong></td><td>R$ 120.000</td><td>R$ 100.000</td><td><strong>R$ 220.000</strong></td></tr>
+                </tbody>
+            </table>
             
-            <p class="reveal" style="margin-top: 30px; color: var(--text-muted);">
+            <p class="reveal" style="margin-top: 32px; color: var(--text-muted);">
                 <strong>Receita recorrente futura (pós-implantação):</strong><br>
                 Suporte e manutenção: R$ 3.000 - R$ 8.000/mês • Atualizações • Novos agentes • Treinamentos
             </p>
@@ -1038,51 +661,23 @@
         <div class="slide-content">
             <h2 class="reveal">Por que a Qore Cognitiva?</h2>
             
-            <table class="diff-table reveal">
+            <table class="table-modern reveal">
                 <thead>
-                    <tr>
-                        <th>Diferencial</th>
-                        <th>Concorrência</th>
-                        <th>Qore Cognitiva</th>
-                    </tr>
+                    <tr><th>Diferencial</th><th>Concorrência</th><th>Qore Cognitiva</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Privacidade</strong></td>
-                        <td>Nuvem pública</td>
-                        <td class="qore-col">100% local/privado</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Personalização</strong></td>
-                        <td>Chatbot genérico</td>
-                        <td class="qore-col">Agentes especializados</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Governança</strong></td>
-                        <td>Sem auditoria</td>
-                        <td class="qore-col">Logs, permissões, rastreabilidade</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Integração</strong></td>
-                        <td>API fechada</td>
-                        <td class="qore-col">Aberto, MCP, customizável</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Preço</strong></td>
-                        <td>US$ 50-500/usuário/mês</td>
-                        <td class="qore-col">R$ 3-15k/mês (empresa toda)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Soberania</strong></td>
-                        <td>Dados no exterior</td>
-                        <td class="qore-col">Dados no Brasil, no cliente</td>
-                    </tr>
+                    <tr><td><strong>Privacidade</strong></td><td>Nuvem pública</td><td>100% local/privado</td></tr>
+                    <tr><td><strong>Personalização</strong></td><td>Chatbot genérico</td><td>Agentes especializados</td></tr>
+                    <tr><td><strong>Governança</strong></td><td>Sem auditoria</td><td>Logs, permissões, rastreabilidade</td></tr>
+                    <tr><td><strong>Integração</strong></td><td>API fechada</td><td>Aberto, MCP, customizável</td></tr>
+                    <tr><td><strong>Preço</strong></td><td>US$ 50-500/usuário/mês</td><td>R$ 3-15k/mês (empresa toda)</td></tr>
+                    <tr><td><strong>Soberania</strong></td><td>Dados no exterior</td><td>Dados no Brasil, no cliente</td></tr>
                 </tbody>
             </table>
             
-            <div class="barriers reveal">
+            <div class="card reveal" style="margin-top: 32px;">
                 <h3>Barreiras de entrada:</h3>
-                <ul>
+                <ul class="check-list">
                     <li>Complexidade técnica (não é só "subir um ChatGPT")</li>
                     <li>Conhecimento de governança e compliance</li>
                     <li>Relacionamentos com clientes enterprise</li>
@@ -1096,9 +691,9 @@
         <div class="slide-content">
             <h2 class="reveal">Onde estamos e para onde vamos</h2>
             
-            <div class="roadmap-section reveal">
-                <div class="roadmap-title" style="border-left-color: #10B981; color: #10B981;">CONCLUÍDO (Q2 2026)</div>
-                <ul class="roadmap-list completed">
+            <div class="card reveal">
+                <h3 style="color: #10B981;">✅ CONCLUÍDO (Q2 2026)</h3>
+                <ul class="check-list">
                     <li>Identidade e arquitetura de marca</li>
                     <li>Stack técnica definida (Ollama, OpenWebUI, RAG)</li>
                     <li>VPS de testes em operação</li>
@@ -1107,9 +702,9 @@
                 </ul>
             </div>
             
-            <div class="roadmap-section reveal">
-                <div class="roadmap-title" style="border-left-color: #F59E0B; color: #F59E0B;">EM ANDAMENTO (Q3 2026)</div>
-                <ul class="roadmap-list ongoing">
+            <div class="card reveal" style="margin-top: 24px;">
+                <h3 style="color: #F59E0B;">🔄 EM ANDAMENTO (Q3 2026)</h3>
+                <ul class="check-list">
                     <li>MVP interno (Marques Cap como laboratório)</li>
                     <li>Base de conhecimento estruturada</li>
                     <li>Primeiros testes com RAG</li>
@@ -1117,9 +712,9 @@
                 </ul>
             </div>
             
-            <div class="roadmap-section reveal">
-                <div class="roadmap-title" style="border-left-color: var(--text-muted); color: var(--text-muted);">PRÓXIMOS (Q4 2026 - Q1 2027)</div>
-                <ul class="roadmap-list upcoming">
+            <div class="card reveal" style="margin-top: 24px;">
+                <h3 style="color: var(--text-muted);">📅 PRÓXIMOS (Q4 2026 - Q1 2027)</h3>
+                <ul class="check-list">
                     <li>Cliente piloto (1-3 empresas)</li>
                     <li>Produto empacotado</li>
                     <li>Documentação comercial</li>
@@ -1134,70 +729,41 @@
         <div class="slide-content">
             <h2 class="reveal">O que buscamos</h2>
             
-            <table class="request-table reveal">
+            <table class="table-modern reveal">
                 <thead>
-                    <tr>
-                        <th>Recurso</th>
-                        <th>Uso</th>
-                        <th>Valor</th>
-                    </tr>
+                    <tr><th>Recurso</th><th>Uso</th><th>Valor</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Hardware</strong></td>
-                        <td>Servidor dedicado (GPU, RAM)</td>
-                        <td>R$ 50-100k</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tempo</strong></td>
-                        <td>Desenvolvimento e validação</td>
-                        <td>6 meses</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Clientes piloto</strong></td>
-                        <td>3-5 empresas para teste</td>
-                        <td>A definir</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Parcerias</strong></td>
-                        <td>Integrações estratégicas</td>
-                        <td>A definir</td>
-                    </tr>
+                    <tr><td><strong>Hardware</strong></td><td>Servidor dedicado (GPU, RAM)</td><td>R$ 50-100k</td></tr>
+                    <tr><td><strong>Tempo</strong></td><td>Desenvolvimento e validação</td><td>6 meses</td></tr>
+                    <tr><td><strong>Clientes piloto</strong></td><td>3-5 empresas para teste</td><td>A definir</td></tr>
+                    <tr><td><strong>Parcerias</strong></td><td>Integrações estratégicas</td><td>A definir</td></tr>
                 </tbody>
             </table>
             
-            <div class="offer-section reveal">
-                <strong>O que oferecemos em troca:</strong>
-                <ul style="margin-top: 20px; list-style: none;">
-                    <li style="padding: 10px 0; display: flex; align-items: center; gap: 10px;">
-                        <svg class="product-icon" style="width:20px;height:20px;opacity:0.7" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                        Equity (para investidores)
-                    </li>
-                    <li style="padding: 10px 0; display: flex; align-items: center; gap: 10px;">
-                        <svg class="product-icon" style="width:20px;height:20px;opacity:0.7" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        Case de sucesso (para clientes piloto)
-                    </li>
-                    <li style="padding: 10px 0; display: flex; align-items: center; gap: 10px;">
-                        <svg class="product-icon" style="width:20px;height:20px;opacity:0.7" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        Prioridade no roadmap (para parceiros)
-                    </li>
+            <div class="card reveal" style="margin-top: 32px; border-left: 5px solid #10B981;">
+                <h3 style="color: #065F46;">O que oferecemos em troca:</h3>
+                <ul class="check-list" style="margin-top: 16px;">
+                    <li style="color: #065F46;">Equity (para investidores)</li>
+                    <li style="color: #065F46;">Case de sucesso (para clientes piloto)</li>
+                    <li style="color: #065F46;">Prioridade no roadmap (para parceiros)</li>
                 </ul>
             </div>
             
-            <div class="closeout-phrase reveal">
-                "Estamos construindo algo grande. E queremos você nessa jornada."
+            <div class="highlight-box reveal" style="margin-top: 32px; text-align: center; border-left: none; background: rgba(26, 26, 26, 0.95); color: white;">
+                <p style="color: white; font-size: 1.4rem; margin: 0;">"Estamos construindo algo grande. E queremos você nessa jornada."</p>
             </div>
         </div>
     </section>
 
     <!-- Slide 10: Contato -->
     <section class="slide slide-contact">
-        <div class="slide-content">
-            <h2 class="contact-title reveal">Vamos conversar?</h2>
+        <div class="slide-content" style="text-align: center;">
+            <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem);">Vamos conversar?</h2>
             
-            <div class="contact-info reveal">
-                <strong>Fabrício Marques Nicolau</strong>
-                <div class="contact-details">
+            <div class="reveal" style="margin: 40px 0;">
+                <strong style="display:block;font-size:2rem;margin-bottom:16px;">Fabrício Marques Nicolau</strong>
+                <div style="font-size:1.2rem;color:var(--text-secondary);line-height:2;">
                     Diretor Executivo | Qore Cognitiva<br>
                     📧 clawdmarques@gmail.com<br>
                     📱 (28) 99999-9999<br>
@@ -1205,12 +771,12 @@
                 </div>
             </div>
             
-            <p class="reveal" style="color: rgba(255,255,255,0.7); margin-top: 30px;">
+            <p class="reveal" style="color: var(--text-muted); margin-top: 32px;">
                 LinkedIn: Qore Cognitiva • GitHub: qore-cognitiva
             </p>
             
-            <div class="final-phrase reveal">
-                "Uma empresa séria o suficiente para armazenar o conhecimento estratégico de uma multinacional."
+            <div class="highlight-box reveal" style="margin-top: 60px; text-align: center; border-left: none;">
+                <p style="font-size:1.4rem;font-style:italic;color:var(--accent);margin:0;">"Uma empresa séria o suficiente para armazenar o conhecimento estratégico de uma multinacional."</p>
             </div>
         </div>
     </section>
@@ -1222,7 +788,6 @@
         const progressBar = document.querySelector('.progress-bar');
         let currentSlide = 0;
 
-        // Criar dots de navegação
         slides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.classList.add('nav-dot');
@@ -1245,7 +810,6 @@
             progressBar.style.width = progress + '%';
         }
 
-        // Navegação por teclado
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
                 e.preventDefault();
@@ -1256,7 +820,6 @@
             }
         });
 
-        // Slide inicial
         goToSlide(0);
     </script>
 </body>
