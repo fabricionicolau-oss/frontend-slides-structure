@@ -166,18 +166,9 @@
             background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-700) 50%, var(--gray-800) 100%);
         }
         
-        /* Slides 2-11: Fundo branco */
-        .slide-2,
-        .slide-3,
-        .slide-4,
-        .slide-5,
-        .slide-6,
-        .slide-7,
-        .slide-8,
-        .slide-9,
-        .slide-10,
-        .slide-11 {
-            background: var(--white);
+        /* Slides 2-11: Fundo branco - override do slide padrão */
+        .slide:not(.slide-1) {
+            background: var(--white) !important;
         }
         
         /* ===========================================
